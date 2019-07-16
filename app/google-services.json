@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "904310596927",
+    "firebase_url": "https://matchat-canada-project-iep.firebaseio.com",
+    "project_id": "matchat-canada-project-iep",
+    "storage_bucket": "matchat-canada-project-iep.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:904310596927:android:e41916e235f9fc5d",
+        "android_client_info": {
+          "package_name": "com.mobicomkit.sample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "904310596927-hv8a5bsjen7betjh6aa37tupbte4kppo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mobicomkit.sample",
+            "certificate_hash": "784a0514266f4d710aa9f0fcce5f4dd3db886f37"
+          }
+        },
+        {
+          "client_id": "904310596927-1mnml26r3l39melkcan4dnfoqioglvfc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTaVgSUbzJvKyfqgBOKuy5Q_81GeGtdH0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "904310596927-1mnml26r3l39melkcan4dnfoqioglvfc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

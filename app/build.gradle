@@ -1,0 +1,102 @@
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+ext{
+    defaultCompileSdkVersion = 27
+    defaultTargetSdkVersion = 27
+    defaultBuildToolVersion = "27.0.3"
+    defaultSupportLibVersion = "27.1.1"
+}
+
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+repositories {
+    jcenter()
+    maven { url 'https://maven.fabric.io/public' }
+}
+android {
+    compileSdkVersion rootProject.hasProperty("compileSdkVersion") ? rootProject.compileSdkVersion : defaultCompileSdkVersion
+
+
+    defaultConfig {
+        applicationId "com.mobicomkit.sample"
+        minSdkVersion 14
+        targetSdkVersion rootProject.hasProperty("targetSdkVersion") ? rootProject.targetSdkVersion : defaultTargetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled false
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    testOptions {
+        unitTests.includeAndroidResources true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+
+        abortOnError false
+
+    }
+
+
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/ECLIPSE_.SF'
+        exclude 'META-INF/ECLIPSE_.RSA'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //Note: use this for customization
+    api project(':mobicomkitui')
+    //api 'com.applozic.communication.uiwidget:mobicomkitui:5.47'
+    implementation 'com.google.firebase:firebase-core:16.0.1'
+    implementation "com.android.support:support-v4:${rootProject.hasProperty("supportLibVersion") ? rootProject.supportLibVersion : defaultSupportLibVersion}"
+    implementation "com.android.support:appcompat-v7:${rootProject.hasProperty("supportLibVersion") ? rootProject.supportLibVersion : defaultSupportLibVersion}"
+    implementation "com.android.support:design:${rootProject.hasProperty("supportLibVersion") ? rootProject.supportLibVersion : defaultSupportLibVersion}"
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation('com.crashlytics.sdk.android:crashlytics:2.5.7@aar') {
+        transitive = true;
+    }
+
+    androidTestImplementation "com.android.support:support-annotations:${rootProject.hasProperty("supportLibVersion") ? rootProject.supportLibVersion : defaultSupportLibVersion}"
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+    androidTestImplementation ('org.mockito:mockito-android:2.6.3'){
+        exclude group: 'org.hamcrest', module:'hamcrest-core'
+    }
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation  'com.google.dagger:dagger:2.13'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.13'
+    androidTestImplementation('org.droidparts.dexmaker:dexmaker:1.5') {
+        exclude module: 'objenesis'
+    }
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'junit:junit:4.12'
+}
+apply plugin: 'com.google.gms.google-services'
